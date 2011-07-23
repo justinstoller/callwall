@@ -1,4 +1,10 @@
 Callwall::Application.routes.draw do
+
+  get 'call' => 'pages#call'
+  get 'search' => 'pages#search'
+  root :to => 'pages#home'
+  resources :people
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
