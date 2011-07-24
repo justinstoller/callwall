@@ -1,9 +1,7 @@
 (function($) {
   $(document).ready(function() {
     var server_domain = 'http://pure-window-301.heroku.com/';
-    var speek_domain = 'http://api.speek.com/calls/';
     var organizer = '';
-    var api_key = 'rurw7tdq28r2xurrtyxb65wv';
 
     $('#searchform').submit(function() {
       organizer = $('#phone-zip').val();
@@ -26,23 +24,11 @@
             link.html(contact['location_city']);
             contact_form.click(function() {
               number = $('a', this).data('number');
-              var path = speek_domain + 'callNow';
-              $.ajax({
-                url: path,
-                data: {
-                  api_key: api_key,
-                  format: "jsonp",
-                  description: "A Call Wall demo",
-                  music_on_hold: 0,
-                  organizer: organizer,
-                  numbers: number
-                },
-                dataType: "jsonp",
-                success: function(data) {
-                  console.log("yo, I'm the callback!");
-                  alert(data);
+              var path = server_domain + 'call';
+              $.post(path, { "organizer": organizer, "numbers": number },
+                  function(data) {
                 }
-              });
+              );
               return false;
             });
             profile.append(contact_form);

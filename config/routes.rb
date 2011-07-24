@@ -1,6 +1,6 @@
 Callwall::Application.routes.draw do
 
-  get 'call' => 'pages#call'
+  post 'call' => 'pages#call'
   post 'search' => 'pages#search'
   root :to => 'pages#home'
   resources :people
