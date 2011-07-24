@@ -84,15 +84,62 @@ div.field, div.actions {
 	width:100%;
 }
 #content-explain {
+	float:left;
 	display:inline;
-	width:700px;
+	width:100%;
+	margin:10px 0 0 15px;
+}
+.content-explain-box {
+	float:left;
+	display:inline-block;
+	width:300px;
+	height:227px;
+	margin:5px;
+	background:#dbeaf3;
+}
+.content-explain-box p {
+	width:100%;
+	text-align:center;
 }
 #content-input {
+	float:left;
 	width:100%;
-	border:1px solid black;
+	border-top:1px dashed #d43e2d;
+	border-bottom:1px dashed #d43e2d;
+	padding:10px 0 10px 0;
+	margin: 20px 0 10px 0;
+	text-align:center;
+}
+.input-holder {
+	display:inline-block;
+}
+.input-holder p {
+	color:#999;
+	font-size:15px;
+	font-family:Impact,sans-serif;
+	margin:0 0 0px 0;
+}
+.cta-input {
+	width:300px;
+	font-size:60px;
+	padding:0 0 0 22px;
+	font-family:Impact,sans-serif;
+	border-radius:20px;
+	-moz-border-radius:20px;
+	-moz-box-shadow:inset 1px 1px 15px #dbeaf3;
+  	-webkit-box-shadow:inset 11px 11px 15px #dbeaf3;
+  	box-shadow:inset 1px 1px 15px #dbeaf3;
+	outline:none;
+}
+#search-zip {
+	width:300px;	
+}
+#search-phone {
+	width:400px;
 }
 #content-reps-holder {
 	width:100%;
+	float:left;
 }
 .rep {
 	text-align:center;

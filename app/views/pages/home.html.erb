@@ -1,19 +1,24 @@
 <div id="outter">
 	<div id="title-area">
 		<div id="title-headline">THE CALL WALL</div>
-		<div id="title-sub">CALLING YOUR REPRESENTATIVE SHOULDN'T BE AN A B CONVERSATION.</div>
+		<div id="title-sub">AN APP TO MAKE CALLING YOUR REPRESENTATIVE COMPLETELY TRANSPARENT</div>
 	</div>
 	<div id="content-area">
 		<div id="content-explain">
-			<p>ENTER YOUR PHONE NUMBER AND ZIP CODE</p>
-			<p>WE GENERATE A LIST OF YOUR REPRESENTATIVES</p>
-			<p>WE CONECT YOU, AND YOU SPEAK YOUR MIND</p>
-			<p>SHARE YOUR CONVERSATION FOR YOUR FELLOW CITIZENS TO HEAR</p>
+			<div class="content-explain-box"><p>WE CONNECT YOU TO <br>YOUR REPRESENTATIVE</p></div>
+			<div class="content-explain-box"><p>SPEAK YOUR MIND</p></div>
+			<div class="content-explain-box"><p>SHARE YOUR CONVERSATION</p></div>
 		</div>
 		<div id="content-input">
 			<form action="/" id="searchform">
-				<input type="text" name="zip" placeholder="94114" id="search-zip" />
-				<input type="text" name="phone" placeholder="415-555-1234" id="phone-zip" />
+				<div class="input-holder">
+					<p>ENTER YOUR ZIP TO START</p>
+					<input type="text" name="zip" maxlength="5" placeholder="94114" class="cta-input" id="search-zip" />
+				</div>
+				<div class="input-holder">
+					<p>YOUR PHONE NUMBER (WE WON'T SHARE)</p>
+					<input type="text" name="phone" maxlength="12" placeholder="415-555-1234" class="cta-input" id="search-phone" />
+				</div>
 				<input type="submit" style="display:none;">
 			</form>
 		</div>
