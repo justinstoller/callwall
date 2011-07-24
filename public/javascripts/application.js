@@ -30,7 +30,7 @@
               var path = speek_domain + 'callNow';
               $.get(path, {
                 "api_key": api_key,
-                "format": "json",
+                "format": "jsonp",
                 "description": "A Call Wall demo",
                 "music_on_hold": 0,
                 "organizer": organizer,
