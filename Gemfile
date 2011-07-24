@@ -12,7 +12,6 @@ gem 'sqlite3'
 
 # Deploy with Capistrano
 # gem 'capistrano'
-gem 'passenger'
 gem 'jquery-rails', '>= 1.0.12'
 
 
