@@ -66,10 +66,10 @@ div.field, div.actions {
 }
 #title-headline {
 	width:100%;
-	padding:10px;
+	padding:35px 0 25px 0;
 	text-align:center;
 	color:#fff;
-	font-size:40px;
+	font-size:72px;
 	font-family:Impact,sans-serif;	
 }
 #title-sub {
