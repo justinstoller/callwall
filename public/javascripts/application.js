@@ -1,12 +1,12 @@
 (function($) {
   $(document).ready(function() {
-    var server_domain = 'http://localhost:3000/';
+    var server_domain = 'http://pure-window-301.heroku.com/';
     var speek_domain = 'http://api.speek.com/calls/';
     var organizer = '';
     var api_key = 'rurw7tdq28r2xurrtyxb65wv';
 
     $('#searchform').submit(function() {
-      organizer = $('#phone-zip');
+      organizer = $('#phone-zip').val();
       var path = server_domain + 'search';
       var orig_profile = $('div.rep');
       $.post(path, { "zip": $('#search-zip').val() }, function(data) {
@@ -21,22 +21,27 @@
           $.each(person['contacts'], function(index, contact) {
             contact_form = orig_contact_form.clone(true, true);
             link = $('a', contact_form);
-            link.data('number', contact['number']);
+            link.data('number', '1' + contact['number']);
             link.attr('title', '(' + contact['number'].slice(0,3) +') ' + contact['number'].slice(3,6) + '-' + contact['number'].slice(6));
             link.html(contact['location_city']);
             contact_form.click(function() {
               number = $('a', this).data('number');
-              console.log(number);
               var path = speek_domain + 'callNow';
-              $.get(path, {
-                "api_key": api_key,
-                "format": "jsonp",
-                "description": "A Call Wall demo",
-                "music_on_hold": 0,
-                "organizer": organizer,
-                "numbers": number
-              }, function(data) {
-                alert(data);
+              $.ajax({
+                url: path,
+                data: {
+                  api_key: api_key,
+                  format: "jsonp",
+                  description: "A Call Wall demo",
+                  music_on_hold: 0,
+                  organizer: organizer,
+                  numbers: number
+                },
+                dataType: "jsonp",
+                success: function(data) {
+                  console.log("yo, I'm the callback!");
+                  alert(data);
+                }
               });
               return false;
             });
