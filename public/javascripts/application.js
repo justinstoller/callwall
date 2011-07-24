@@ -6,37 +6,46 @@
     console.log("document ready");
 
     $('#searchform').submit(function() {
-      organizer = $('#organizer');
-      console.log(organizer.to_str);
-      console.log($('#search-zip').value.to_str);
-      $.get({
-        url: server_domain.to_str + 'search',
-        data: {
-          zip: $('#search-zip').value.to_str
-        },
-        success: function(data) {
-         // build something with the object passed back from the server
-        }
-      });
-      return false;
-    });
-
-    $('.call').click(function() {
-      number = $(this).number;
-      $.post({
-        url: speek_domain + 'callNow',
-        data: {
-          api_key: api_key,
-          format: "json",
-          description: "A Call Wall demo",
-          music_on_hold: 0,
-          organizer: organizer,
-          numbers: number
-        },
-        success: function(data) {
-         // build something with the object passed back from the server
-        }
-      });
+      organizer = $('#phone-zip');
+      console.log(organizer.val());
+      console.log($('#search-zip').val());
+      var path = server_domain + 'search';
+      console.log(path);
+      $.post(path, { "zip": $('#search-zip').val() }, function(data) {
+          $.each(data, function(index, user) {
+            console.log(user);
+            var person = user['person'];
+            var orig_profile = $('div.rep');
+            var profile = orig_profile.clone(true, true);
+            $('div.rep-pic', profile).prepend('<img src="' + server_domain + person['image_link'] + '" />');
+            $('div.rep-name', profile).html(person['first_name'] + ' ' + person['last_name']);
+            $('div.rep-title', profile).html(person['position']);
+            var orig_contact_form = $('div.rep-phone', profile);
+            $.each(person['contacts'], function(index, contact) {
+              contact_form = orig_contact_form.clone(true, true);
+              link = $('a', contact_form);
+              link.data('number', contact['number']);
+              link.html(contact['location_city']);
+              $('div#content-reps-holder').prepend(profile);
+              contact_form.click(function() {
+                number = $('a', this).number;
+                $.post(speek_domain + 'callNow', {
+                    "api_key": api_key,
+                    "format": "json",
+                    "description": "A Call Wall demo",
+                    "music_on_hold": 0,
+                    "organizer": organizer,
+                    "numbers": number
+                  }, function(data) {
+                   // build something with the object passed back from the server
+                  });
+              });
+              return false;
+            });
+            orig_contact_form.remove();
+            orig_contact_form = null;
+          });
+        });
       return false;
     });
   });
