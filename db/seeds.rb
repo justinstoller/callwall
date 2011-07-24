@@ -10,7 +10,7 @@ mark = Person.create(:first_name => 'Mark', :last_name => 'Leno', :position => '
 tom = Person.create(:first_name => 'Tom', :last_name => 'Ammiano', :position => 'Assemblymember', :image_link => 'images/tom_ammiano.jpg')
 barb = Person.create(:first_name => 'Barbara', :last_name => 'Boxer', :position => 'US Senator', :image_link => 'images/barbara_boxer.jpg')
 nancy = Person.create(:first_name => 'Nancy', :last_name => 'Pelosi', :position => 'US Representative', :image_link => 'images/nancy_pelosi.jpg')
-dianne = Person.create(:first_name => 'Dianne', :last_name => 'Feinstein', :position => 'US Senator', :iamge_link => 'images/dianne_feinstein.jpg')
+dianne = Person.create(:first_name => 'Dianne', :last_name => 'Feinstein', :position => 'US Senator', :image_link => 'images/dianne_feinstein.jpg')
 
 zip = Zipcode.create(:number => '94114')
 
