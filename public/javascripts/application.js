@@ -3,6 +3,7 @@
     var server_domain = 'http://localhost:3000/';
     var speek_domain = 'http://api.speek.com/calls/';
     var organizer = '';
+    var api_key = 'rurw7tdq28r2xurrtyxb65wv';
 
     $('#searchform').submit(function() {
       organizer = $('#phone-zip');
@@ -21,11 +22,13 @@
             contact_form = orig_contact_form.clone(true, true);
             link = $('a', contact_form);
             link.data('number', contact['number']);
-            link.attr('title', contact['number']);
+            link.attr('title', '(' + contact['number'].slice(0,3) +') ' + contact['number'].slice(3,6) + '-' + contact['number'].slice(6));
             link.html(contact['location_city']);
             contact_form.click(function() {
-              number = $('a', this).number;
-              $.post(speek_domain + 'callNow', {
+              number = $('a', this).data('number');
+              console.log(number);
+              var path = speek_domain + 'callNow';
+              $.get(path, {
                 "api_key": api_key,
                 "format": "json",
                 "description": "A Call Wall demo",
@@ -33,7 +36,7 @@
                 "organizer": organizer,
                 "numbers": number
               }, function(data) {
-                //build something with the object passed back from the server
+                alert(data);
               });
               return false;
             });
